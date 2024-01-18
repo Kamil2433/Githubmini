@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github Mini</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">GithubMini</a>
+
+      <div>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            id="username"
+          />
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            onclick="{fetchuser()}"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+
+    <!-- profile -->
+
+    <div class="spinner-border" role="status" id="loader" style="display: none">
+      <span class="sr-only">Loading...</span>
+    </div>
+
+    <section
+      class="vh-100"
+      style="background-color: #9de2ff"
+      id="profilesection"
+    >
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-md-9 col-lg-7 col-xl-5">
+            <div class="card" style="border-radius: 15px">
+              <div class="card-body p-4">
+                <div class="d-flex text-black">
+                  <div class="flex-shrink-0">
+                    <img
+                      id="image"
+                      alt="profile"
+                      class="img-fluid"
+                      style="width: 180px; border-radius: 10px"
+                    />
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <h5 class="mb-1" id="name">Name</h5>
+                    <p class="mb-2 pb-1" style="color: #2b2a2a" id="bio">Bio</p>
+                    <div
+                      class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                      style="background-color: #efefef"
+                    >
+                      <div>
+                        <p class="small text-muted mb-1">Followers</p>
+                        <p class="mb-0" id="followers">0</p>
+                      </div>
+                      <div class="px-3">
+                        <p class="small text-muted mb-1">Following</p>
+                        <p class="mb-0" id="following">0</p>
+                      </div>
+                      <div>
+                        <p class="small text-muted mb-1">Repos</p>
+                        <p class="mb-0" id="repo">0</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ////page selection -->
+      </div>
+    </section>
+
+    <div
+      class="justify-content-center row vertical-align"
+      style="background-color: #9de2ff"
+    >
+      <div>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search Repos"
+            aria-label="Search"
+            id="reposearch"
+          />
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            type="button"
+            onclick="{getrepos()}"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+
+      <select
+        class="form-select m-2"
+        id="pageselector"
+        aria-label="Default select example"
+        onchange="getrepos()"
+      >
+        <option value="10" selected>No of results per page :10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+
+    <div class="justify-content-center" style="align-items: center">
+      <div
+        id="repotable"
+        class="justify-content-center"
+        style="align-items: center"
+      ></div>
+    </div>
+    <!-- </div> -->
+
+    <div>
+      <footer
+        class="d-flex justify-content-center"
+        style="background-color: #9de2ff"
+      >
+        <nav aria-label="Page navigation example justify-content-center ">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" onclick="{decrementpage()}">Previous</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" onclick="{setcurrentpage(1)}">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" onclick="{setcurrentpage(2)}">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" onclick="{setcurrentpage(3)}">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" onclick="{incrementpage()}">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>
